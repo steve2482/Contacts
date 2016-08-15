@@ -1,4 +1,8 @@
-.add-button {
+#add-button {
 	margin-top: 5px;
 	background-color: lightblue;
 }
+
+#names {
+	text-decoration: underline;
+	
