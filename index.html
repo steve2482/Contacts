@@ -6,8 +6,9 @@
 	<link rel="stylesheet" type="text/css" href="styles/style.css">
 </head>
 	<body>
-		<h1>Contacts</h1>
-		<h3>Add a contact</h3>
+		<div class="form-containter">
+			<h1>Contacts</h1>
+			<h3>Add a contact</h3>
 			<form id="contact-form">
 				First Name<br>
 				<input id="first-name" class="form-fields" type="text"><br>
@@ -23,10 +24,19 @@
 				<input id="state" class="form-fields" type="text"><br>
 				<button id="add-button" type="submit" value="Add">Add</button>
 			</form>
+		</div>
+		<div class="contact-list">	
 		<h4>Contacts:</h4>
 			<ul id="contact-names">
-				
 			</ul>
+		</div>
+		<div class="contact-display">
+		<h3 id="fName-disply"></h3>
+		<p id="phone-display"></p>
+		<p id="street-display"></p>
+		<p id="city-display"></p>
+		<p id="state-display"></p>
+		</div>
 		
 		<script src="http://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="JS/app.js"></script>		

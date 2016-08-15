@@ -1,5 +1,6 @@
 $(document).ready(function() {
   // Form Fields
+  var id = 0;
   var firstName = $("#first-name");
   var lastName = $("#last-name");
   var phone = $("#phone");
@@ -10,7 +11,8 @@ $(document).ready(function() {
   // Storage Array
   var contactList = [];
 
-  function makeContact(firstName, lastName, phone, street, city, state) {
+  function Contact(id, firstName, lastName, phone, street, city, state) {
+    this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
     this.phone = phone;
@@ -23,13 +25,17 @@ $(document).ready(function() {
 
   $('#add-button').click(function(e) {
     e.preventDefault();
-    var contact = new makeContact(firstName.val(), lastName.val(), phone.val(), street.val(), city.val(), state.val());
+    var contact = new Contact(id, firstName.val(), lastName.val(), phone.val(), street.val(), city.val(), state.val());
     contactList.push(contact);
-  // Show Colapsed Contact List
-    for (var i in contactList) {
-      if (contactList.hasOwnProperty) {
-        $("#contact-names").append(
-          '<li id="names"><a href="#">' + contactList[i].firstName + ' ' + contactList[i].lastName + "</a></li>");
-      }}
+    $("#contact-names").append(
+          '<li id="names"><a href="#" class="hello">' + contact.firstName + ' ' + contact.lastName + "</a></li>");
+    id++;
+  });
+
+  // Click Contact Name to Display Contact Info
+
+  $('#contact-names').children().click(function(e) {
+    e.preventDefault();
+    console.log("Hello");
   });
 });

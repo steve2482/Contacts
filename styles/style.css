@@ -4,5 +4,6 @@
 }
 
 #names {
-	text-decoration: underline;
+	text-underline-position: none;
+}
 	
