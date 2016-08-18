@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Contacts</title>
-	<link rel="stylesheet" type="text/css" href="styles/style.css">
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<title>Contacts</title>
+		<link rel="stylesheet" type="text/css" href="styles/style.css">
+	</head>
 	<body>
 		<div class="form-container">
 			<h1>Contacts</h1>
@@ -24,29 +24,26 @@
 				<input id="state" class="form-fields" type="text"><br>
 				<button id="add-button" type="submit" value="Add">Add</button>
 			</form>
-		</div>		
+		</div>
 		<div class="contact-display">
-		<h3 id="fName-display">Test</h3>
-		<p id="phone-display"></p>
-		<p id="street-display"></p>
-		<p id="city-display"></p>
-		<p id="state-display"></p>
+			<h3><span id="fName-display"></span></h3>
+			<p><span id="phone-display"></span></p>
+			<p><span id="street-display"></span> <span id="city-display"></span> <span id="state-display"></span></p>
 		</div>
 		<div class="more-info-modal">
 			<div class="modal-content">
 				<p>Please enter more information.</p>
 				<p>(Required: First name, Last name, Phone)</p>
 				<a href="#" class="info-ok-button">OK</a>
-			</div>	
+			</div>
 		</div>
-		<div class="contact-list">	
-		<h4>Contacts:</h4>
+		<div class="contact-list">
+			<h4>Contacts:</h4>
 			<ul id="contact-names">
 			</ul>
 		</div>
-
 		
 		<script src="http://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
-		<script type="text/javascript" src="JS/app.js"></script>		
+		<script type="text/javascript" src="JS/app.js"></script>
 	</body>
 </html>
