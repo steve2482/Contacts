@@ -9,6 +9,7 @@ $(document).ready(function() {
   var state = $("#state");
 
   // Storage Array
+
   var contactList = [];
 
   function Contact(id, firstName, lastName, phone, street, city, state) {
@@ -28,14 +29,25 @@ $(document).ready(function() {
     var contact = new Contact(id, firstName.val(), lastName.val(), phone.val(), street.val(), city.val(), state.val());
     contactList.push(contact);
     $("#contact-names").append(
-          '<li id="names"><a href="#" class="hello">' + contact.firstName + ' ' + contact.lastName + "</a></li>");
+          '<li class="names"><a href="#" id="' + contact.id + '">' + contact.firstName + ' ' + contact.lastName + "</a></li>");
     id++;
+    document.getElementById("contact-form").reset();
   });
 
   // Click Contact Name to Display Contact Info
 
-  $('#contact-names').children().click(function(e) {
-    e.preventDefault();
-    console.log("Hello");
+  $('#contact-names').click('a', function(e) {
+    var id = e.target.id;
+    console.log(e.target, e.target.id);
+    $('#fName-display').text(
+      contactList[id].firstName + ' ' + contactList[id].lastName);
+    $('#phone-display').text(
+      contactList[id].phone);
+    $('#street-display').text(
+      contactList[id].street);
+    $('#city-display').text(
+      contactList[id].city);
+    $('#state-display').text(
+      contactList[id].state);
   });
 });

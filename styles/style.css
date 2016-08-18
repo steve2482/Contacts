@@ -3,7 +3,13 @@
 	background-color: lightblue;
 }
 
-#names {
-	text-underline-position: none;
+.form-container {
+	min-width: 300px;
+	max-width: 450px;
+	background-color: gray;
+	float: left;
 }
-	
+
+.contact-list {
+	clear: both;
+}
