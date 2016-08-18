@@ -11,7 +11,7 @@
 			<h3>Add a contact</h3>
 			<form id="contact-form" name="contactForm">
 				First Name<br>
-				<input id="first-name" class="form-fields" type="text" required><br>
+				<input id="first-name" class="form-fields" type="text"><br>
 				Last Name<br>
 				<input id="last-name" class="form-fields" type="text"><br>
 				Phone Number<br>
@@ -32,16 +32,19 @@
 		<p id="city-display"></p>
 		<p id="state-display"></p>
 		</div>
+		<div class="more-info-modal">
+			<div class="modal-content">
+				<p>Please enter more information.</p>
+				<p>(Required: First name, Last name, Phone)</p>
+				<a href="#" class="info-ok-button">OK</a>
+			</div>	
+		</div>
 		<div class="contact-list">	
 		<h4>Contacts:</h4>
 			<ul id="contact-names">
 			</ul>
 		</div>
-		<div class="more-info-modal">
-			<p>Please enter more information.</p>
-			<p>(Required: First name, Last name, Phone)</p>
-			<a href="#" class="info-ok-button">OK</a>
-		</div>
+
 		
 		<script src="http://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="JS/app.js"></script>		

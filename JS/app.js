@@ -22,12 +22,25 @@ $(document).ready(function() {
     this.state = state;
   }
 
-  // Form validation(not working)
+  // Form validation and submission
 
   function validateForm() {
-    var x = document.forms['.contactForm']['.first-name'].val();
-    if (x === null || x === '') {
+    var x = $('#first-name').val();
+    var y = $('#last-name').val();
+    var z = $('#phone').val();
+    if (x === null || x === '' || x === undefined) {
       $('.more-info-modal').show();
+    } else if (y === null || y === '' || y === undefined) {
+      $('.more-info-modal').show();
+    } else if (z === null || z === '' || z === undefined) {
+      $('.more-info-modal').show();
+    } else {
+      var contact = new Contact(id, firstName.val(), lastName.val(), phone.val(), street.val(), city.val(), state.val());
+      contactList.push(contact);
+      $("#contact-names").append(
+          '<li class="names"><a href="#" id="' + contact.id + '">' + contact.firstName + ' ' + contact.lastName + "</a></li>");
+      id++;
+      document.getElementById("contact-form").reset();
     }
   }
 
@@ -36,12 +49,12 @@ $(document).ready(function() {
   $('#add-button').click(function(e) {
     e.preventDefault();
     validateForm();
-    var contact = new Contact(id, firstName.val(), lastName.val(), phone.val(), street.val(), city.val(), state.val());
-    contactList.push(contact);
-    $("#contact-names").append(
-          '<li class="names"><a href="#" id="' + contact.id + '">' + contact.firstName + ' ' + contact.lastName + "</a></li>");
-    id++;
-    document.getElementById("contact-form").reset();
+  });
+
+  // Click OK on modal to hide
+
+  $('.info-ok-button').click(function() {
+    $('.more-info-modal').hide();
   });
 
   // Click Contact Name to Display Contact Info
