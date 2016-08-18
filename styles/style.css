@@ -13,3 +13,7 @@
 .contact-list {
 	clear: both;
 }
+
+.more-info-modal {
+	display: none;
+}

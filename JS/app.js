@@ -22,10 +22,20 @@ $(document).ready(function() {
     this.state = state;
   }
 
+  // Form validation(not working)
+
+  function validateForm() {
+    var x = document.forms['.contactForm']['.fname'].val();
+    if (x === null || x === '') {
+      $('.more-info-modal').show();
+    }
+  }
+
   // Submit Contact to Contacts list
 
   $('#add-button').click(function(e) {
     e.preventDefault();
+    validateForm();
     var contact = new Contact(id, firstName.val(), lastName.val(), phone.val(), street.val(), city.val(), state.val());
     contactList.push(contact);
     $("#contact-names").append(
