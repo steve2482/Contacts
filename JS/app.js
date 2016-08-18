@@ -25,7 +25,7 @@ $(document).ready(function() {
   // Form validation(not working)
 
   function validateForm() {
-    var x = document.forms['.contactForm']['.fname'].val();
+    var x = document.forms['.contactForm']['.first-name'].val();
     if (x === null || x === '') {
       $('.more-info-modal').show();
     }
