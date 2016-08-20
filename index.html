@@ -15,20 +15,24 @@
 				Last Name<br>
 				<input id="last-name" class="form-fields" type="text"><br>
 				Phone Number<br>
-				<input id="phone" class="form-fields" type="tel" name="phone" required><br>
+					<div id="phone-container">
+						<input id="phone0" class="form-fields" type="tel" name="phone" required><br>
+					</div>
+				<button id="add-phone" type="submit" value="Add Phone Number">Add Phone Number</button><br>
 				Street<br>
 				<input id="street" class="form-fields" type="text"><br>
 				City<br>
 				<input id="city" class="form-fields" type="text"><br>
 				State<br>
 				<input id="state" class="form-fields" type="text"><br>
-				<button id="add-button" type="submit" value="Add">Add</button>
+				<button id="add-address" type="submit" value="Add Address">Add Address</button><button id="add-button" type="submit" value="Add">Add Contact</button>
 			</form>
 		</div>
 		<div class="contact-display">
 			<h3><span id="fName-display"></span></h3>
-			<p><span id="phone-display"></span></p>
-			<p><span id="street-display"></span> <span id="city-display"></span> <span id="state-display"></span></p>
+			<p><span id="phone-display"></span><br>
+			<span id="phone-display-two"></span><br></p>
+			<p><span id="address-display"></span></p>
 		</div>
 		<div class="more-info-modal">
 			<div class="modal-content">
