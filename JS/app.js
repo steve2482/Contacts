@@ -4,7 +4,7 @@ $(document).ready(function() {
   var firstName = $("#first-name");
   var lastName = $("#last-name");
   var phone = $("#phone0");
-  var phoneNumbers = [];
+  var phoneNumbers = [phone];
   var street = $("#street");
   var city = $("#city");
   var state = $("#state");
@@ -14,11 +14,11 @@ $(document).ready(function() {
 
   var contactList = [];
 
-  function Contact(id, firstName, lastName, phone, street, city, state) {
+  function Contact(id, firstName, lastName, phoneNumbers, street, city, state) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
-    this.phone = phone;
+    this.phoneNumbers = phoneNumbers;
     this.address = address;
   }
 
@@ -37,10 +37,11 @@ $(document).ready(function() {
       $('.more-info-modal').show();
     } else {
       // Create Contact
+      var phoneNums = [];
       for (var i = 0; i < phoneNumbers.length; i++) {
-        phone.push(phoneNumbers[i].val());
+        phoneNums.push(phoneNumbers[i].val());
       }
-      var contact = new Contact(id, firstName.val(), lastName.val(), phoneNumbers, street.val(), city.val(), state.val());
+      var contact = new Contact(id, firstName.val(), lastName.val(), phoneNums, street.val(), city.val(), state.val());
       contactList.push(contact);
       $("#contact-names").append(
           '<li class="names"><a href="#" id="' + contact.id + '">' + contact.firstName + ' ' + contact.lastName + "</a></li>");
