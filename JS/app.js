@@ -4,7 +4,7 @@ $(document).ready(function() {
   var firstName = $("#first-name");
   var lastName = $("#last-name");
   var phone = $("#phone0");
-  var phoneNumbers = [phone];
+  var phoneNumbers = [];
   var street = $("#street");
   var city = $("#city");
   var state = $("#state");
@@ -91,7 +91,7 @@ $(document).ready(function() {
       contactList[id].lastName);
     for (var i = 0; i < phoneNumbers.length; i++) {
       $('#phone' + i).val(
-        contactList[id].phoneNumbers[i]);
+        contactList[id].phoneNumbers.phoneNums[i]);
     }
     $('#street').val(
       contactList[id].address[0]);
