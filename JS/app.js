@@ -45,16 +45,24 @@ $(document).ready(function() {
       var contact = new Contact(id, firstName.val(), lastName.val(), phoneNumbers, street.val(), city.val(), state.val());
       phoneNumbers.numbers.push(phone.val());
       var elementExists = $('#phone1');
-      if (elementExists) {
+      if (elementExists.length > 0) {
         phoneNumbers.numbers.push($('#phone-container').children().last().prev().val());
+        console.log(contact);
+        contactList.push(contact);
+        $("#contact-names").append(
+            '<li class="names"><a href="#" id="' + contact.id + '">' + contact.firstName + ' ' + contact.lastName + "</a></li>");
+        id++;
+        // Clear Form
+        document.getElementById("contact-form").reset();
+      } else {
+        console.log(contact);
+        contactList.push(contact);
+        $("#contact-names").append(
+            '<li class="names"><a href="#" id="' + contact.id + '">' + contact.firstName + ' ' + contact.lastName + "</a></li>");
+        id++;
+        // Clear Form
+        document.getElementById("contact-form").reset();
       }
-      console.log(contact);
-      contactList.push(contact);
-      $("#contact-names").append(
-          '<li class="names"><a href="#" id="' + contact.id + '">' + contact.firstName + ' ' + contact.lastName + "</a></li>");
-      id++;
-      // Clear Form
-      document.getElementById("contact-form").reset();
     }
   }
 
