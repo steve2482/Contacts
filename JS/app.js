@@ -4,10 +4,9 @@ $(document).ready(function() {
   var firstName = $("#first-name");
   var lastName = $("#last-name");
   var phone = $("#phone0");
-  var phone1 = $("#phone1");
-  var phoneNumbers = {
-    numbers: [phone, phone1]
-  };
+  // var phoneNumbers = {
+  //   numbers: []
+  // };
   var street = $("#street");
   var city = $("#city");
   var state = $("#state");
@@ -40,17 +39,22 @@ $(document).ready(function() {
       $('.more-info-modal').show();
     } else {
       // Create Contact
+      var phoneNumbers = {
+        numbers: []
+      };
       var contact = new Contact(id, firstName.val(), lastName.val(), phoneNumbers, street.val(), city.val(), state.val());
-      phoneNumbers.numbers.push(this.phone0);
-      phoneNumbers.numbers.push(this.phone1);
+      phoneNumbers.numbers.push(phone.val());
+      var elementExists = $('#phone1');
+      if (elementExists) {
+        phoneNumbers.numbers.push($('#phone-container').children().last().prev().val());
+      }
+      console.log(contact);
       contactList.push(contact);
       $("#contact-names").append(
           '<li class="names"><a href="#" id="' + contact.id + '">' + contact.firstName + ' ' + contact.lastName + "</a></li>");
       id++;
       // Clear Form
       document.getElementById("contact-form").reset();
-      console.log(contact);
-      console.log(contact.phoneNumbers);
     }
   }
 
@@ -61,7 +65,7 @@ $(document).ready(function() {
     validateForm();
   });
 
-  // Add Additional Phone Number
+  // Add Additional Phone Number Input
 
   $('#add-phone').click(function(e) {
     e.preventDefault();
@@ -71,7 +75,7 @@ $(document).ready(function() {
     $('#remove-phone').show();
   });
 
-  // Remove Phone Number
+  // Remove Phone Number Input
   $('#remove-phone').click(function(e) {
     e.preventDefault();
     $('#remove-phone').hide();
@@ -90,12 +94,13 @@ $(document).ready(function() {
 
   $('#contact-names').click('a', function(e) {
     var id = e.target.id;
-    console.log(contactList[id]);
     // Display contact
     $('#fName-display').text(
       contactList[id].firstName + ' ' + contactList[id].lastName);
-    $('#phone-display').text(
-      contactList[id].phoneNumbers[0]);
+    for (var i = 0; i < contactList[id].phoneNumbers.numbers.length; i++) {
+      $('#phone-display' + i).text(
+        contactList[id].phoneNumbers.numbers[i]);
+    }
     $('#address-display').text(
       contactList[id].address);
   });
