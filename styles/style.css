@@ -1,4 +1,4 @@
-#add-button, #add-phone, #add-address, #remove-phone {
+#add-button, #add-phone, #add-address, #remove-phone, #remove-address {
 	margin-top: 5px;
 	background-color: #4485BF;
 	border-radius: 5px;
@@ -22,7 +22,7 @@
 	margin-top: 5px;
 }
 
-#remove-phone {
+#remove-phone, #remove-address {
 	display: none;
 	background-color: #FF4040;
 }
