@@ -4,13 +4,9 @@ $(document).ready(function() {
   var firstName = $("#first-name");
   var lastName = $("#last-name");
   var phone = $("#phone0");
-  // var phoneNumbers = {
-  //   numbers: []
-  // };
   var street = $("#street");
   var city = $("#city");
   var state = $("#state");
-  var address = [street, city, state];
 
   // Storage Array
 
@@ -42,27 +38,26 @@ $(document).ready(function() {
       var phoneNumbers = {
         numbers: []
       };
-      var contact = new Contact(id, firstName.val(), lastName.val(), phoneNumbers, street.val(), city.val(), state.val());
+      var address = {
+        locations: []
+      };
+      var contact = new Contact(id, firstName.val(), lastName.val(), phoneNumbers, address);
       phoneNumbers.numbers.push(phone.val());
+      address.locations.push(street.val() + ',' + city.val() + ',' + state.val());
       var elementExists = $('#phone1');
       if (elementExists.length > 0) {
         phoneNumbers.numbers.push($('#phone-container').children().last().prev().val());
-        console.log(contact);
-        contactList.push(contact);
-        $("#contact-names").append(
-            '<li class="names"><a href="#" id="' + contact.id + '">' + contact.firstName + ' ' + contact.lastName + "</a></li>");
-        id++;
-        // Clear Form
-        document.getElementById("contact-form").reset();
-      } else {
-        console.log(contact);
-        contactList.push(contact);
-        $("#contact-names").append(
-            '<li class="names"><a href="#" id="' + contact.id + '">' + contact.firstName + ' ' + contact.lastName + "</a></li>");
-        id++;
-        // Clear Form
-        document.getElementById("contact-form").reset();
       }
+      var addressExists = $('.address2');
+      if (addressExists.length > 0) {
+        address.locations.push($('#street1').val() + ',' + $('#city1').val() + ',' + $('#state1').val());
+      }
+      contactList.push(contact);
+      $("#contact-names").append(
+            '<li class="names"><a href="#" id="' + contact.id + '">' + contact.firstName + ' ' + contact.lastName + "</a></li>");
+      id++;
+      // Clear Form
+      document.getElementById("contact-form").reset();
     }
   }
 
@@ -103,7 +98,7 @@ $(document).ready(function() {
   $('#add-address').click(function(e) {
     e.preventDefault();
     $('#address-container').append(
-      '<div class="address2">Address Two<br>Street<br><input id="street" class="form-fields" type="text"><br>City<br><input id="city" class="form-fields" type="text"><br>State<br><input id="state" class="form-fields" type="text"></div>');
+      '<div class="address2">Address Two<br>Street<br><input id="street1" class="form-fields" type="text"><br>City<br><input id="city1" class="form-fields" type="text"><br>State<br><input id="state1" class="form-fields" type="text"></div>');
     $('#add-address').hide();
     $('#remove-address').show();
   });
@@ -126,8 +121,8 @@ $(document).ready(function() {
     for (var i = 0; i < contactList[id].phoneNumbers.numbers.length; i++) {
       $('#phone-display' + i).text(
         contactList[id].phoneNumbers.numbers[i]);
+      $('#address-display' + i).text(
+        contactList[id].address.locations[i]);
     }
-    $('#address-display').text(
-      contactList[id].address);
   });
 });
