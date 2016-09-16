@@ -4,7 +4,10 @@ $(document).ready(function() {
   var firstName = $("#first-name");
   var lastName = $("#last-name");
   var phone = $("#phone0");
-  var phoneNumbers = [];
+  var phone1 = $("#phone1");
+  var phoneNumbers = {
+    numbers: [phone, phone1]
+  };
   var street = $("#street");
   var city = $("#city");
   var state = $("#state");
@@ -14,7 +17,7 @@ $(document).ready(function() {
 
   var contactList = [];
 
-  function Contact(id, firstName, lastName, phoneNumbers, street, city, state) {
+  function Contact(id, firstName, lastName, phoneNumbers, address) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
@@ -37,17 +40,17 @@ $(document).ready(function() {
       $('.more-info-modal').show();
     } else {
       // Create Contact
-      var phoneNums = [];
-      for (var i = 0; i < phoneNumbers.length; i++) {
-        phoneNums.push(phoneNumbers[i].val());
-      }
-      var contact = new Contact(id, firstName.val(), lastName.val(), phoneNums, street.val(), city.val(), state.val());
+      var contact = new Contact(id, firstName.val(), lastName.val(), phoneNumbers, street.val(), city.val(), state.val());
+      phoneNumbers.numbers.push(this.phone0);
+      phoneNumbers.numbers.push(this.phone1);
       contactList.push(contact);
       $("#contact-names").append(
           '<li class="names"><a href="#" id="' + contact.id + '">' + contact.firstName + ' ' + contact.lastName + "</a></li>");
       id++;
       // Clear Form
       document.getElementById("contact-form").reset();
+      console.log(contact);
+      console.log(contact.phoneNumbers);
     }
   }
 
@@ -63,7 +66,18 @@ $(document).ready(function() {
   $('#add-phone').click(function(e) {
     e.preventDefault();
     $('#phone-container').append(
-      '<input id="phone' + phoneNumbers.length + '" class="form-fields" type="tel"><br>');
+      '<input id="phone1" class="form-fields" type="tel"><br class="phone-break">');
+    $('#add-phone').hide();
+    $('#remove-phone').show();
+  });
+
+  // Remove Phone Number
+  $('#remove-phone').click(function(e) {
+    e.preventDefault();
+    $('#remove-phone').hide();
+    $('#add-phone').show();
+    $('#phone1').remove();
+    $('.phone-break').remove();
   });
 
   // Click OK on modal to hide
@@ -84,20 +98,5 @@ $(document).ready(function() {
       contactList[id].phoneNumbers[0]);
     $('#address-display').text(
       contactList[id].address);
-    // Fill in Form to Allow for Edit
-    $('#first-name').val(
-      contactList[id].firstName);
-    $('#last-name').val(
-      contactList[id].lastName);
-    for (var i = 0; i < phoneNumbers.length; i++) {
-      $('#phone' + i).val(
-        contactList[id].phoneNumbers.phoneNums[i]);
-    }
-    $('#street').val(
-      contactList[id].address[0]);
-    $('#city').val(
-      contactList[id].address[1]);
-    $('#state').val(
-      contactList[id].address[2]);
   });
 });

@@ -1,4 +1,4 @@
-#add-button, #add-phone, #add-address {
+#add-button, #add-phone, #add-address, #remove-phone {
 	margin-top: 5px;
 	background-color: #4485BF;
 	border-radius: 5px;
@@ -20,6 +20,11 @@
 
 #phone1 {
 	margin-top: 5px;
+}
+
+#remove-phone {
+	display: none;
+	background-color: #FF4040;
 }
 
 .contact-display {
