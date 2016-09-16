@@ -66,6 +66,12 @@ $(document).ready(function() {
     }
   }
 
+  // Click OK on modal to hide
+
+  $('.info-ok-button').click(function() {
+    $('.more-info-modal').hide();
+  });
+
   // Submit Contact to Contacts list
 
   $('#add-button').click(function(e) {
@@ -92,10 +98,22 @@ $(document).ready(function() {
     $('.phone-break').remove();
   });
 
-  // Click OK on modal to hide
+  // Add Additional Address Input
 
-  $('.info-ok-button').click(function() {
-    $('.more-info-modal').hide();
+  $('#add-address').click(function(e) {
+    e.preventDefault();
+    $('#address-container').append(
+      '<div class="address2">Address Two<br>Street<br><input id="street" class="form-fields" type="text"><br>City<br><input id="city" class="form-fields" type="text"><br>State<br><input id="state" class="form-fields" type="text"></div>');
+    $('#add-address').hide();
+    $('#remove-address').show();
+  });
+
+  // Remove Address Input
+  $('#remove-address').click(function(e) {
+    e.preventDefault();
+    $('#remove-address').hide();
+    $('#add-address').show();
+    $('.address2').remove();
   });
 
   // Click Contact Name to Display Contact Info and to Edit
